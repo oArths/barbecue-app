@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "iconoir-react-native": "^7.5.0",
+    "react-native-svg": "^15.1.0"
+  }
+}
