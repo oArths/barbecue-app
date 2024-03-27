@@ -1,20 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import Pessoas from "./src/pages/pessoas/pessoas";
+import { View } from "react-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>hahahahah</Text>
-      <StatusBar style="auto" />
+    <View>
+      <StatusBar style="light" backgroundColor="transparent" translucent />
+      <Pessoas />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
