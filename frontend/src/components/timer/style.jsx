@@ -1,45 +1,28 @@
 import  styled  from "styled-components/native"
 
-export const Container = styled.View`
+export const Mints = styled.View`
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
+  width: 100px;
 `;
-
-export const Mints = styled.View`
-    display: flex;
-  flex-direction: row;
-
-
-`;
-
-
 export const ViewOpUp = styled.TouchableOpacity`
-    background-color:  #ffff;
-    width: 30%;
-    height: 100%;
+    background-color:  #A4161A;
+    width: 35%;
+    /* height: 100%; */
     align-items: center;
     justify-content: center;
-    border-width: 1px;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
-    border-color: #585353b1;
-    border-bottom-width:0.5px ;
+    border-width: 0px;
+    border-radius: 5px;
     
 `;
 export const ViewOpDo = styled.TouchableOpacity`
-    background-color: #fff;
-    width: 30px;
-    height: 70px;
+   background-color:  #A4161A;
+    width: 35%;
+    /* height: 100%; */
     align-items: center;
     justify-content: center;
-    border-width: 1px;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
-    border-color: #585353b1;
-    border-top-width:0.5px ;
+    border-width: 0px;
+    border-radius: 5px;
 `;
 
 export const ButtonUp = styled.Image`
@@ -55,38 +38,16 @@ export const ButtonDown = styled.Image`
 export const ViewText = styled.View`
   display: flex;
   flex-direction: row;
-  
+  justify-content:center ;
+  align-items: center;
+  border: none;
+  width: 50%;
 `;
 
 export const NumberText = styled.Text`
-  align-items: center;
+  display: flex;
   text-align: center;
-  width: 90px;
   color: black;
-  height: 70px;
-  font-size: 30px;
-  border-width: 1px;
-  border-left-width: 0px;
-  border-right-width: 0px;
-  border-color: #585353b1;
-
-  `;
-  export const DateTimeText = styled.Text`
-  display: flex;
-  font-size: 16px;
-  padding: 5px;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border: 0.5px;
-  border-color: black;
-  border-radius: 7px;
-`;
-
-export const Button = styled.TouchableOpacity`
-  display: flex;
+  height: 100%;
   font-size: 20px;
-  justify-content: center;
-  align-items: center;
-`;
-
+  `;
