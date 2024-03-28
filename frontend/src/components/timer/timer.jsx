@@ -10,11 +10,11 @@ const delayDuration = 300;
 
 
 const increaseMinutes = () => {
-  setMinutes(prevMinutes => (prevMinutes < 59 ? prevMinutes + 1 : 0));
+  setMinutes(prevMinutes => (prevMinutes < 50 ? prevMinutes + 1 : 0));
 };
 
 const decreaseMinutes = () => {
-  setMinutes(prevMinutes => (prevMinutes > 0 ? prevMinutes - 1 : 59));
+  setMinutes(prevMinutes => (prevMinutes > 0 ? prevMinutes - 1 : 50));
 };
 
 const handlePressInMints = () => {
