@@ -3,25 +3,21 @@ import  styled  from "styled-components/native"
 export const Mints = styled.View`
   display: flex;
   flex-direction: row;
-  width: 100px;
+  width: 100%;
 `;
 export const ViewOpUp = styled.TouchableOpacity`
     background-color:  #A4161A;
     width: 35%;
-    /* height: 100%; */
     align-items: center;
     justify-content: center;
-    border-width: 0px;
     border-radius: 5px;
     
 `;
 export const ViewOpDo = styled.TouchableOpacity`
    background-color:  #A4161A;
     width: 35%;
-    /* height: 100%; */
     align-items: center;
     justify-content: center;
-    border-width: 0px;
     border-radius: 5px;
 `;
 
@@ -41,7 +37,7 @@ export const ViewText = styled.View`
   justify-content:center ;
   align-items: center;
   border: none;
-  width: 50%;
+  width: 30%;
 `;
 
 export const NumberText = styled.Text`

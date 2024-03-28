@@ -1,7 +1,10 @@
 import * as S from "./style"
 import Timer from "../../components/timer/timer";
+import Button from "../../components/botao/botao";
 
-const Pessoas = () => {
+const Total = 23;
+
+const Pessoas = ({navigation}) => {
     return(
         <S.Body>
             <S.iconContainer>
@@ -46,14 +49,13 @@ const Pessoas = () => {
                         <S.TitleOp>Total</S.TitleOp>
                     </S.HaederContainer>
                     <S.ConatinerCount>
-                        <S.Total>23</S.Total>       
+                        <S.Total>{Total}</S.Total>       
                     </S.ConatinerCount>
                 </S.ConatinerOp>
             </S.Conatiner>
-            <S.Button>
-            <S.TitleButton>Próximo</S.TitleButton>
-            <S.IconNext source={require("../../img/Union.png")}/>
-            </S.Button>
+            <Button
+            
+            />
         </S.Body>
     )
 }

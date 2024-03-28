@@ -33,30 +33,7 @@ height: 26px;
 
 
 `;
-export const Button = styled.TouchableOpacity`
-position: absolute;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-gap: 10px;
-width: 170px;
-height: 44px;
-border-radius: 10px;
-background-color: #A4161A;
-bottom: 50px;
 
-`;
-export const TitleButton = styled.Text`
-color: #ffffff;
-font-size: 22px;
-
-`;
-export const IconNext = styled.Image`
-width: 15px;
-height: 13px;
-
-`;
 export const TitleContainer = styled.View`
 width: 300px;
 
@@ -85,7 +62,7 @@ background-color: #ffffff;
 border-radius: 15px;
 padding: 20px;
 width: 300px;
-gap: 25px;
+gap: 20px;
 elevation: 2;
 
 `;
@@ -104,15 +81,17 @@ export const ConatinerCount = styled.View`
 display: flex;
 align-items: center;
 justify-content: center;
-width: 110px;
+width: 150px;
 height: 50px;
 `;
 export const Total = styled.Text`
+background-color: #eeeeee;
+width: 60px;
+border-radius: 5px;
 text-align: center;
 color: black;
 font-size: 20px;
-margin-left: 30px;
-/* background-color: blue; */
+margin-left: 23px;
 
 `;
 export const IconOp = styled.Image`
