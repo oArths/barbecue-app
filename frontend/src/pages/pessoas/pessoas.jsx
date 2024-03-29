@@ -4,7 +4,7 @@ import Button from "../../components/botao/botao";
 
 const Total = 23;
 
-const Pessoas = ({navigation}) => {
+function Pessoas () {
     return(
         <S.Body>
             <S.iconContainer>
