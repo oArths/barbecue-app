@@ -1,18 +1,17 @@
 import styled from "styled-components/native";
 
 export const Body = styled.View`
-display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 
- background-color: aqua;
-`
+  background-color: aqua;
+`;
 export const ModalOut = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.096);
-  
 `;
 export const ModalIn = styled.View`
   display: flex;
@@ -24,19 +23,22 @@ export const ModalIn = styled.View`
   height: 150px;
 `;
 
-
-export const CloseModal = styled.Button`
-    margin-left: 140px;
-   
-  
-`;
-export const Text = styled.Text`
-  font-weight: bold;
-  font-size: 25px;
+export const CloseModal = styled.TouchableOpacity`
+  margin-left: 140px;
 `;
 export const Image = styled.Image`
-  width: 30px;
+  width: 20px;
   height: 20px;
+`;
+export const Container = styled.View`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+export const Text = styled.Text`
+  font-weight: bold;
+  font-size: 18px;
 `;
 
 export const ContainerButton = styled.View`
@@ -44,25 +46,17 @@ export const ContainerButton = styled.View`
   flex-direction: row;
   gap: 20px;
 `;
-export const Cancel = styled.Button`
+export const Confirm = styled.TouchableOpacity`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #5aa15d;
+  background-color: #660708;
   border-radius: 10px;
-  width: 84px;
-  height: 39px;
-`;
-export const Delete = styled.Button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #d34646;
-  border-radius: 10px;
-  width: 84px;
+  width: 100px;
   height: 39px;
 `;
 export const ButtonText = styled.Text`
-font-size: 20px;
+  font-size: 20px;
   color: white;
 `;
+
