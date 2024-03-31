@@ -54,7 +54,7 @@ function Pessoas () {
                 </S.ConatinerOp>
             </S.Conatiner>
             <Button
-            
+            Label="Próximo"
             />
         </S.Body>
     )
