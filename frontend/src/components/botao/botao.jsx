@@ -1,9 +1,9 @@
 import * as S from "./style.jsx"
 
-const Button = () => {
+const Button = ({Label}) => {
     return(
         <S.Button >
-            <S.TitleButton>Próximo</S.TitleButton>
+            <S.TitleButton>{Label}</S.TitleButton>
             <S.IconNext source={require("../../img/Union.png")}/>
         </S.Button>
     )

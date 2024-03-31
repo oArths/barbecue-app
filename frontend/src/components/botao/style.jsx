@@ -11,7 +11,7 @@ width: 170px;
 height: 44px;
 border-radius: 10px;
 background-color: #A4161A;
-bottom: 50px;
+bottom: 40px;
 
 `;
 export const TitleButton = styled.Text`
