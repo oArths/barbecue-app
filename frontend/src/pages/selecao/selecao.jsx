@@ -2,10 +2,8 @@ import * as S from "./style.jsx"
 import Button from "../../components/botao/botao.jsx";
 import ModalOp from "../../components/modal/modal.jsx";
 import React, { useState } from 'react';
-
-
+import Check from "../../components/check/check.jsx"
 const  Selecao = ( ) => {
-    // const [modalVisible, setModalVisible] = useState(false);
     const [modalDeleteVisible, setModalDeleteVisible] = useState(false);
 
   const abrirModalDelete = () => {
@@ -16,8 +14,11 @@ const  Selecao = ( ) => {
     setModalDeleteVisible(false);
   };
 
+
+
     return(
         <S.Body>
+
             <S.iconContainer>
                 <S.IconButton >
                     <S.Icon source={require("../../img/seta.png")}/>
@@ -55,14 +56,13 @@ const  Selecao = ( ) => {
                     <S.ConatinerExtras
                     source={require('../../img/extras.png')}
                     />
-                    <S.ConatinerTitle>Extra</S.ConatinerTitle>
-                </S.ConatinerOp>
+                                <Check Label="oi"/>
 
+                    <S.ConatinerTitle>Extra</S.ConatinerTitle>
+                </S.ConatinerOp>            
             </S.Conatiner >
             <ModalOp   isVisible={modalDeleteVisible} onClose={fecharModalDelete}/>
-            <Button/>
-
-
+            <Button Label="Próximo"/>
         </S.Body>
     )
 }

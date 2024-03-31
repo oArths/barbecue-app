@@ -8,7 +8,7 @@ export const Body = styled.View`
   width: 100%;
   height: 100%;
   background-color: #f5f5f5;
-  gap: 30px;
+  gap: 15px;
 `;
 export const iconContainer = styled.View`
   display: flex;
@@ -28,21 +28,27 @@ export const Icon = styled.Image`
   height: 26px;
 `;
 export const TitleContainer = styled.View`
-  width: 300px;
+  width: 400px;
 `;
 export const Title = styled.Text`
   text-align: center;
   color: black;
-  font-size: 30px;
+  font-size: 25px;
+`;
+export const ConatinerScroll = styled.ScrollView`
+display: flex;
+flex-direction: column;
+height: 100%;
+width:100%;
+background-color: aqua;
+
 `;
 export const Conatiner = styled.View`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: right;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 64%;
-  gap: 30px;
+  gap: 15px;
 `;
 
 export const ConatinerOp = styled.TouchableOpacity`
@@ -53,7 +59,7 @@ export const ConatinerOp = styled.TouchableOpacity`
   background-color: #000000;
   border-radius: 15px;
   padding: 20px;
-  width: 110px;
+  width: 310px;
   height: 110px;
   gap: 20px;
   elevation: 2;
