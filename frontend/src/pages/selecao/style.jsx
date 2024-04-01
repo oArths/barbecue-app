@@ -51,9 +51,9 @@ export const Conatiner = styled.View`
   gap: 15px;
 `;
 
-export const ConatinerOp = styled.TouchableOpacity`
+export const ConatinerOp = styled.View`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   background-color: #000000;
@@ -61,9 +61,21 @@ export const ConatinerOp = styled.TouchableOpacity`
   padding: 20px;
   width: 310px;
   height: 110px;
-  gap: 20px;
+  gap: 40px;
   elevation: 2;
 `;
+export const Conatinerleft = styled.View`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
+export const ConatinerRigth = styled.View`
+display: flex;
+flex-direction: column;
+/* justify-content: center; */
+/* align-items: center; */
+`
 export const ConatinerImg = styled.Image`
   width: 55px;
   height: 56px;
@@ -91,4 +103,9 @@ export const ConatinerExtras = styled.Image`
 export const ConatinerTitle = styled.Text`
   font-size: 18px;
   color: white;
+`;
+export const ConatinerExtra = styled.Text`
+  font-size: 18px;
+  color: white;
+  margin-right: 20px;
 `;
