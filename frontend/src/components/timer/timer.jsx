@@ -56,11 +56,9 @@ const handlePressOutMints = () => {
               source={require('../../img/less.png')}
               />
           </S.ViewOpUp>
-
           <S.ViewText >
             <S.NumberText>{String(minutes).padStart(2, '0')}</S.NumberText>
           </S.ViewText>
-
           <S.ViewOpDo onPressIn={handlePressInMints} onPress={increaseMinutes} onPressOut={handlePressOutMints} >     
               <S.ButtonDown 
               source={require('../../img/plus.png')}

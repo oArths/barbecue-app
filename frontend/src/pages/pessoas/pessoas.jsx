@@ -1,10 +1,13 @@
 import * as S from "./style"
 import Timer from "../../components/timer/timer";
 import Button from "../../components/botao/botao";
+import { useNavigation } from "@react-navigation/native";
 
 const Total = 23;
 
-function Pessoas () {
+const Pessoas =()=> {
+      const nav = useNavigation();
+
     return(
         <S.Body>
             <S.iconContainer>
@@ -55,6 +58,10 @@ function Pessoas () {
             </S.Conatiner>
             <Button
             Label="Próximo"
+            iconSource={require("../../img/Union.png")}
+            onPress={() => {
+          nav.navigate("Selecao")
+        }}
             />
         </S.Body>
     )
