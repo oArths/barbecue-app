@@ -1,10 +1,11 @@
 import * as S from "./style.jsx"
 
-const Button = ({Label}) => {
+const Button = ({Label, onPress, iconSource }) => {
+
     return(
-        <S.Button >
+        <S.Button onPress={onPress}>
             <S.TitleButton>{Label}</S.TitleButton>
-            <S.IconNext source={require("../../img/Union.png")}/>
+            {iconSource && <S.IconNext source={iconSource} />}
         </S.Button>
     )
 }
