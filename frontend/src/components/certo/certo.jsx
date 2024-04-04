@@ -2,7 +2,7 @@ import * as S from "./style"
 import {useState} from "react"
 import { Checkbox } from 'react-native-paper';
 
-    const Certo = ({Label}) => {
+    const Certo = ({Label, value}) => {
           const [checked, setChecked] = useState(false);
 
     return(
@@ -11,6 +11,7 @@ import { Checkbox } from 'react-native-paper';
             setChecked(!checked);
              }}>
         <Checkbox 
+        value={Label}
         status={checked ? "checked" : "unchecked"} 
         color="#660708"
         uncheckedColor="#660708"
