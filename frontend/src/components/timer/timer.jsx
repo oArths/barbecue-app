@@ -1,74 +1,39 @@
-import React, { useState} from 'react';
-import * as S from "./style"
+import React, { useState } from 'react';
+import * as S from "./style";
 
+const Timer = ({ maxCount, onCountChange }) => {
+  const [count, setCount] = useState(0);
 
-export default function Timer  ()  {
-const [minutes, setMinutes] = useState(0);
-const [delayTimeout, setDelayTimeout] = useState(null);
-const [increaseTimeout, setIncreaseTimeout] = useState(null);
-const delayDuration = 300;
-
-
-const increaseMinutes = () => {
-  setMinutes(prevMinutes => (prevMinutes < 50 ? prevMinutes + 1 : 0));
-};
-
-const decreaseMinutes = () => {
-  setMinutes(prevMinutes => (prevMinutes > 0 ? prevMinutes - 1 : 50));
-};
-
-const handlePressInMints = () => {
-  const timeout = window.setTimeout(() => {
-    const interval = window.setInterval(() => {
-      increaseMinutes();
-    }, 150);
-    setIncreaseTimeout(interval);
-  }, delayDuration);
-  setDelayTimeout(timeout);
-};
-
-const handlePressDesMints = () => {
-  const timeout = window.setTimeout(() => {
-    const interval = window.setInterval(() => {
-      decreaseMinutes();
-    }, 150);
-    setIncreaseTimeout(interval);
-  }, delayDuration);
-  setDelayTimeout(timeout);
-};
-
-const handlePressOutMints = () => {
-  if (delayTimeout) {
-    window.clearTimeout(delayTimeout);
-    setDelayTimeout(null);
-  }
-  if (increaseTimeout) {
-    window.clearInterval(increaseTimeout);
-    setIncreaseTimeout(null);
-  }
-};
-
-  
-    return (
-        <S.Mints>
-          <S.ViewOpUp onPressIn={handlePressDesMints} onPress={decreaseMinutes} onPressOut={handlePressOutMints}>     
-              <S.ButtonUp          
-              source={require('../../img/less.png')}
-              />
-          </S.ViewOpUp>
-          <S.ViewText >
-            <S.NumberText>{String(minutes).padStart(2, '0')}</S.NumberText>
-          </S.ViewText>
-          <S.ViewOpDo onPressIn={handlePressInMints} onPress={increaseMinutes} onPressOut={handlePressOutMints} >     
-              <S.ButtonDown 
-              source={require('../../img/plus.png')}
-              />
-          </S.ViewOpDo>
-        </S.Mints>
-    );
+  const increaseCount = () => {
+    if (count < maxCount) {
+      const newCount = count + 1;
+      setCount(newCount);
+      onCountChange(newCount, 'increase'); 
+    }
   };
+  
+  const decreaseCount = () => {
+    if (count > 0) {
+      const newCount = count - 1;
+      setCount(newCount);
+      onCountChange(newCount, 'decrease'); 
+    }
+  };
+  
 
+  return (
+    <S.Mints>
+      <S.ViewOpUp onPress={decreaseCount}>
+        <S.ButtonUp source={require('../../img/less.png')} />
+      </S.ViewOpUp>
+      <S.ViewText>
+        <S.NumberText>{String(count).padStart(2, '0')}</S.NumberText>
+      </S.ViewText>
+      <S.ViewOpDo onPress={increaseCount}>
+        <S.ButtonDown source={require('../../img/plus.png')} />
+      </S.ViewOpDo>
+    </S.Mints>
+  );
+};
 
-
-
-
+export default Timer;

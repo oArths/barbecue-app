@@ -1,12 +1,23 @@
 import * as S from "./style"
+import { useState } from "react";
 import Timer from "../../components/timer/timer";
 import Button from "../../components/botao/botao";
 import { useNavigation } from "@react-navigation/native";
 
-const Total = 23;
 
 const Pessoas =()=> {
       const nav = useNavigation();
+      const [total, setTotal] = useState(0);
+      const handleTotalChange = (count, signal) => {
+  setTotal(prevTotal => {
+    if (signal === 'increase') {
+      return prevTotal + 1; // Aumenta o total em 1
+    } else if (signal === 'decrease') {
+      return prevTotal - 1; // Diminui o total em 1
+    }
+    return prevTotal; // Retorna o total inalterado se o sinal não for 'increase' nem 'decrease'
+  });
+};
 
     return(
         <S.Body>
@@ -25,7 +36,7 @@ const Pessoas =()=> {
                         <S.TitleOp>Homem</S.TitleOp>
                     </S.HaederContainer>
                     <S.ConatinerCount>                
-                        <Timer/>
+                        <Timer maxCount={50 - total} onCountChange={handleTotalChange} />
                     </S.ConatinerCount>
                 </S.ConatinerOp>
                 <S.ConatinerOp>
@@ -34,7 +45,7 @@ const Pessoas =()=> {
                         <S.TitleOp>Mulher</S.TitleOp>
                     </S.HaederContainer>
                     <S.ConatinerCount>                
-                        <Timer/>
+                        <Timer maxCount={50 - total} onCountChange={handleTotalChange} />
                     </S.ConatinerCount>
                 </S.ConatinerOp>
                 <S.ConatinerOp>
@@ -43,7 +54,7 @@ const Pessoas =()=> {
                         <S.TitleOp>Criança</S.TitleOp>
                     </S.HaederContainer>
                     <S.ConatinerCount>                
-                        <Timer/>
+                        <Timer maxCount={50 - total} onCountChange={handleTotalChange} />
                     </S.ConatinerCount>
                 </S.ConatinerOp>
                 <S.ConatinerOp>
@@ -52,7 +63,7 @@ const Pessoas =()=> {
                         <S.TitleOp>Total</S.TitleOp>
                     </S.HaederContainer>
                     <S.ConatinerCount>
-                        <S.Total>{Total}</S.Total>       
+                        <S.Total>{total}</S.Total>       
                     </S.ConatinerCount>
                 </S.ConatinerOp>
             </S.Conatiner>
