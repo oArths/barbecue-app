@@ -34,30 +34,37 @@ export const TitleContainer = styled.View`
 export const Title = styled.Text`
   text-align: center;
   color: black;
-  font-size: 25px;
+  font-size: 35px;
 `;
 export const Container = styled.View`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
-export const ContainerOp = styled.View`
+export const ContainerResult = styled.View`
   display: flex;
   flex-direction: column;
-  text-align: left;
-  align-items: start;
+  margin-left: 20%;
+  gap: 10px;
+`;
+export const Result = styled.Text`
+text-align: right;
+font-size: 17px;
+font-weight: bold;
+`;
+export const ContainerOp = styled.View`
+  display: flex;
+  flex-direction: column; 
   gap: 10px;
   width: 300px;
   border-radius: 5px;
-    background-color: aqua;
 
 `;
 export const ContainerTitle = styled.Text`
-  text-align: center;
+  text-align: left;
   color: black;
   font-size: 30px;
-  background-color: aqua;
-  width: 92px;
+  width: 260px;
 `;
 export const Op = styled.View`
  display: flex;
