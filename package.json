@@ -1,7 +1,12 @@
 {
+  "script": {
+    "back":"npm "
+  },
   "dependencies": {
     "@react-navigation/native-stack": "^6.9.26",
+    "axios": "^1.6.8",
     "expo-sqlite": "^13.4.0",
+    "fs": "^0.0.1-security",
     "iconoir-react-native": "^7.5.0",
     "react-native-safe-area-context": "^4.9.0",
     "react-native-screens": "^3.30.1",
