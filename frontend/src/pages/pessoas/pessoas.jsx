@@ -27,7 +27,7 @@ const Pessoas =()=> {
                 </S.IconButton>
             </S.iconContainer>
             <S.TitleContainer>
-                <S.Title>Selecione as pessoas</S.Title>
+                <S.Title>Selecione as pessoaaaas</S.Title>
             </S.TitleContainer>
             <S.Conatiner>
                 <S.ConatinerOp>
