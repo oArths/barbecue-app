@@ -1,112 +1,100 @@
 // Importações necessárias
-import React from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   View,
   Text,
   TouchableOpacity,
   Image,
-  ScrollView,
 } from "react-native";
+import { Card } from '../../components/card/card.jsx'
 import { useNavigation } from "@react-navigation/native";
+import { ImageBackground } from "react-native-web";
 
 export default function Home() {
   const navigation = useNavigation();
 
-  const onPress = () => {
-    navigation.navigate("Receitas");
-  };
-  
-  const onPress2 = () => {
-    navigation.navigate("TodasReceitas");
-  };
+  const goTo = {
+    Receitas: () => navigation.navigate("Receitas"),
+    TodasReceitas: () => navigation.navigate("TodasReceitas"),
+    Lista: () => navigation.navigate("Lista")
+  }
+
+  useEffect(() => {
+
+  })
+
+  const mainImage = "https://www.anffasindical.org.br/images/comunicacao/noticias/2023/12-dezembro/18/Inserir_um_subttulo_10.png",
+    mainName = "Picanha";
 
   return (
 
-      <View style={styles.container}>
-        <Image
-          style={styles.logo}
-          resizeMode="cover"
-          source={require("../../img/Logo.png")}
-        />
+    <View style={styles.container}>
+      <Image
+        style={styles.logo}
+        resizeMode="cover"
+        source={require("../../img/Logo.png")}
+      />
 
-        <View style={styles.mainImage}>
-          <Image
-            style={styles.picanha}
-            resizeMode="auto"
-            source={require("../../img/picanha.png")}
-          />
+    {/* primeira receita  */}
+      <ImageBackground source={{uri: mainImage}} style={styles.mainImageContainer} resizeMode="cover">
 
+        {/* 
+         
+         Não usamos o campo da nota
+          
           <Image
             style={styles.nota}
             resizeMode="auto"
             source={require("../../img/nota.png")}
-          />
-
-          <TouchableOpacity
-            style={styles.book}
-            onPress={onPress}
-          >
-            <View>
-              <Image
-                resizeMode="auto"
-                source={require("../../img/book.png")}
-              />
-            </View>
-          </TouchableOpacity>
-
-          <Text style={styles.title}>Picanha</Text>
-
-          <Text style={styles.subtitle}>Veja a Receita Clicando no Card</Text>
-        </View>
-
-
-        <Text style={styles.title2}>Nossas Opções</Text>
-
-        
-
-        <View style={styles.slider}>
-          <View style={styles.cardContainer}>
-            <TouchableOpacity style={styles.card}>
-              <Image
-                style={styles.boi}
-                resizeMode="auto"
-                source={require("../../img/boi.png")}
-              />
-              <Text style={{ color: "white" }}>Bovina</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.card}>
-              <Image
-                style={styles.boi}
-                resizeMode="auto"
-                source={require("../../img/porco.png")}
-              />
-              <Text style={{ color: "white" }}>Suina</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.card}>
-              <Image
-                style={styles.bebidas}
-                resizeMode="auto"
-                source={require("../../img/bebidas.png")}
-              />
-              <Text style={{ color: "white" }}>Bebidas</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+          /> */}
 
         <TouchableOpacity
-        
-        onPress={onPress2}
-        style={styles.button}>
-          <Text style={{ color: "white", left: 50, }}>Faça Sua lista</Text>
-          <Image
-            style={{ width: 13, height: 11, left: 60 }}
-            source={require("../../img/Union.png")}
-          />
+          style={styles.book}
+          onPress={goTo.Receitas}
+        >
+          <View>
+            <Image
+              resizeMode="auto"
+              source={require("../../img/book.png")}
+            />
+          </View>
         </TouchableOpacity>
 
+
+        <Text style={styles.title}>{mainName}</Text>
+
+        <Text style={styles.subtitle}>Veja a Receita Clicando no Card</Text>
+      </ImageBackground>
+
+
+      <Text style={styles.title2}>Nossas Opções</Text>
+
+
+
+      <View style={styles.slider}>
+        <View style={styles.cardContainer}>
+          <Card imageName="boi.png" text="bovina" />
+          <Card imageName="porco.png" text="suina" />
+          <Card imageName="bebidas.png" text="bebidas" />
+          {/* <Card imageName="porco.png"/>
+            <Card imageName="bebidas.png"/> */}
+        </View>
       </View>
-   
+
+      <TouchableOpacity
+
+        onPress={goTo.Lista}
+        style={styles.button}>
+        <Text style={{ color: "white", left: 50, }}>Faça Sua lista</Text>
+        <Image
+          style={{ width: 13, height: 11, left: 60 }}
+          source={require("../../img/Union.png")}
+        />
+      </TouchableOpacity>
+
+    </View>
+
   );
 }
 
@@ -123,15 +111,15 @@ const styles = StyleSheet.create({
     left: 20,
     padding: 20,
   },
-  picanha: {
-    padding: 20,
-    position: "relative",
+  mainImageContainer: {
+      width: "100%",
+      height: "60%"
   },
-  nota: {
-    padding: 0,
-    position: "absolute",
-    margin: 10,
-  },
+  // nota: {
+  //   padding: 0,
+  //   position: "absolute",
+  //   margin: 10,
+  // },
   book: {
     padding: 0,
     position: "absolute",
@@ -157,23 +145,9 @@ const styles = StyleSheet.create({
   title2: {
     fontSize: 24,
     textAlign: "left",
- 
+
     padding: 10,
 
-  },
-  card: {
-    borderRadius: 10,
-    paddingTop: 35,
-    alignItems: "center",
-    width: 112,
-    height: 128,
-    backgroundColor: "#161A1D",
-  },
-
-  boi: {
-    width: 60,
-    height: 39,
-    alignItems: "center",
   },
   bebidas: {
     width: 30,

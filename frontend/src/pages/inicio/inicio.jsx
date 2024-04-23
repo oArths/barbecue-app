@@ -7,14 +7,13 @@ import { TouchableOpacity } from "react-native-web";
 export default function Inicio() {
   const navigation = useNavigation();
 
-
   const goToHome = () => {
     navigation.navigate("Home");
   }
 
   return (
     <TouchableOpacity onPress={goToHome} style={styles.container}>
-      <View style={styles.container}>
+      <View>
         <Image
           resizeMode="contain"
           source={require("../../img/Logo.png")}
@@ -35,9 +34,10 @@ const styles = StyleSheet.create({
   },
   image: {
     aspectRatio: 1,
-    
-    // minWidth: 200,
+    minWidth: 100,
+    minHeight: 100,
     marginBottom: 20,
+    alignSelf: "center"
   },
   text: {
     color: "#FFF",
