@@ -24,7 +24,7 @@ export const consultarTodasReceitas = async () => {
 
 }
 
-export const pequisarReseita = async (nome) => await
+export const pequisarReceita = async (nome) => await
     consultarTodasReceitas()
         .then((receitas) => receitas
             .filter((receita) => removerFormatacao(receita.receita).includes(removerFormatacao(nome))))

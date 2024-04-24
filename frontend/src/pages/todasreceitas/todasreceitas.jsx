@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,72 +8,39 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-
+import { consultarTodasReceitas, pequisarReceita } from "../../../../backend/services/api-receitas";
 import { useNavigation } from "@react-navigation/native";
+import FoodItem from "../../components/foodItem/foodItem"
 
-const FoodItem = ({ item }) => {
-  return (
-    <View style={styles.foodItemContainer}>
-      <Image
-        resizeMode="contain"
-        source={{ uri: item.imageUri }}
-        style={styles.foodItemImage}
-      />
-      <View style={styles.foodItemTextContainer}>
-        <Text style={styles.foodItemName}>{item.name}</Text>
-        <Text style={styles.foodItemDetail}>{item.detail}</Text>
-        <Text style={styles.foodItemPrice}>{item.price}</Text>
-      </View>
-      <View style={styles.ratingContainer}>
-        <Text style={styles.ratingText}>{item.rating}</Text>
-        <Image
-          resizeMode="contain"
-          source={{ uri: item.ratingImageUri }}
-          style={styles.ratingImage}
-        />
-      </View>
-    </View>
-  );
-};
 
-const foodItemsData = [
-  {
-    name: "Picanha",
-    detail: "Serve 2 pessoas",
-    price: "R$5.99",
-    rating: "4.7",
-    imageUri: "../../img/picanha.png",
-    ratingImageUri: "../../img/estrela.png",
-  },
-  {
-    name: "Picanha",
-    detail: "Serve 2 pessoas",
-    price: "R$5.99",
-    rating: "4.7",
-    imageUri: "../../img/picanha.png",
-    ratingImageUri: "../../img/estrela.png",
-  },
-  {
-    name: "Picanha",
-    detail: "Serve 2 pessoas",
-    price: "R$5.99",
-    rating: "4.7",
-    imageUri: "../../img/picanha.png",
-    ratingImageUri: "../../img/estrela.png",
-  },
-];
+export default function TodasReceitas() {
 
-const App = () => {
+  const [recipes, setRecipes] = useState([]);
+
   const navigation = useNavigation();
 
-  const onPress = () => {
+  function getRecipes() {
+    consultarTodasReceitas().then(receitasEncontradas => {
+      console.log(receitas)
+      setReceitas(receitasEncontradas)
+    })
+  }
+
+  function searchRecipes() {
+    consultarTodasReceitas().then(receitasEncontradas => {
+      console.log(receitas)
+      setReceitas(receitasEncontradas)
+    })
+  }
+
+  const goToHome = () => {
     navigation.navigate("Home");
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <TouchableOpacity
-        onPress={onPress}
+        onPress={goToHome}
         style={styles.buttonContainer}
       >
         <Image
@@ -96,7 +63,7 @@ const App = () => {
 
       <Text style={styles.sectionTitle}>Receitas</Text>
       <View style={styles.divider} />
-      {foodItemsData.map((item, index) => (
+      {recipes.map((item, index) => (
         <FoodItem
           key={index}
           item={item}
@@ -159,52 +126,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#B1A7A6",
     marginVertical: 27,
   },
-  foodItemContainer: {
-    backgroundColor: "#161A1D",
-    borderRadius: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 12,
-    marginTop: 25,
-  },
-  foodItemImage: {
-    width: 91,
-    height: 91,
-  },
-  foodItemTextContainer: {
-    flex: 1,
-    marginLeft: 20,
-  },
-  foodItemName: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#FFFFFF",
-  },
-  foodItemDetail: {
-    fontSize: 14,
-    color: "#FFFFFF",
-    marginTop: 5,
-  },
-  foodItemPrice: {
-    fontSize: 21,
-    fontWeight: "bold",
-    color: "#FFFFFF",
-    marginTop: 5,
-  },
-  ratingContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  ratingText: {
-    fontSize: 14,
-    color: "#FFFFFF",
-    marginRight: 5,
-  },
-  ratingImage: {
-    width: 15,
-    height: 15,
-  },
+
   bottomSpacer: {
     height: 117,
   },
@@ -219,4 +141,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;

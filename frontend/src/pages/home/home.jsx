@@ -1,10 +1,11 @@
 // Importações necessárias
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { consultarReceitaPorId } from '../../../../backend/services/api-receitas.js'
 import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity,
+  Pressable,
   Image,
 } from "react-native";
 import { Card } from '../../components/card/card.jsx'
@@ -13,6 +14,7 @@ import { ImageBackground } from "react-native-web";
 
 export default function Home() {
   const navigation = useNavigation();
+  const [recipe, setRecipe] = useState({})
 
   const goTo = {
     Receitas: () => navigation.navigate("Receitas"),
@@ -20,12 +22,16 @@ export default function Home() {
     Lista: () => navigation.navigate("Lista")
   }
 
+  function getMainRecipe() {
+    consultarReceitaPorId(1).then((receita) => {
+      console.log(receita)
+      setRecipe(receita)
+    })
+  }
+
   useEffect(() => {
-
-  })
-
-  const mainImage = "https://www.anffasindical.org.br/images/comunicacao/noticias/2023/12-dezembro/18/Inserir_um_subttulo_10.png",
-    mainName = "Picanha";
+    getMainRecipe()
+  }, [])
 
   return (
 
@@ -36,8 +42,8 @@ export default function Home() {
         source={require("../../img/Logo.png")}
       />
 
-    {/* primeira receita  */}
-      <ImageBackground source={{uri: mainImage}} style={styles.mainImageContainer} resizeMode="cover">
+      {/* primeira receita  */}
+      <ImageBackground source={{ uri: recipe.link_imagem }} style={styles.mainImageContainer} resizeMode="cover">
 
         {/* 
          
@@ -49,7 +55,7 @@ export default function Home() {
             source={require("../../img/nota.png")}
           /> */}
 
-        <TouchableOpacity
+        <Pressable
           style={styles.book}
           onPress={goTo.Receitas}
         >
@@ -59,10 +65,10 @@ export default function Home() {
               source={require("../../img/book.png")}
             />
           </View>
-        </TouchableOpacity>
+        </Pressable>
 
 
-        <Text style={styles.title}>{mainName}</Text>
+        <Text style={styles.title}>{recipe.receita}</Text>
 
         <Text style={styles.subtitle}>Veja a Receita Clicando no Card</Text>
       </ImageBackground>
@@ -82,7 +88,7 @@ export default function Home() {
         </View>
       </View>
 
-      <TouchableOpacity
+      <Pressable
 
         onPress={goTo.Lista}
         style={styles.button}>
@@ -91,7 +97,7 @@ export default function Home() {
           style={{ width: 13, height: 11, left: 60 }}
           source={require("../../img/Union.png")}
         />
-      </TouchableOpacity>
+      </Pressable>
 
     </View>
 
@@ -112,8 +118,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   mainImageContainer: {
-      width: "100%",
-      height: "60%"
+    width: "1000",
+    height: "600",
+    backgroundColor: "black"
   },
   // nota: {
   //   padding: 0,
