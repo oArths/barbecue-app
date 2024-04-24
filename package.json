@@ -4,6 +4,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "back": "nodemon ./backend/services/api-receitas.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
@@ -14,8 +15,14 @@
     "@react-navigation/native-stack": "^6.9.26",
     "@react-navigation/stack": "^6.3.29",
     "@types/react": "~18.2.45",
+    "axios": "^1.6.8",
     "expo": "~50.0.14",
+    "expo-file-system": "^16.0.9",
+    "expo-sqlite": "^13.4.0",
     "expo-status-bar": "~1.11.1",
+    "fs": "^0.0.1-security",
+    "node-cache": "^5.1.2",
+    "nodemon": "^3.1.0",
     "react": "18.2.0",
     "react-dom": "^18.2.0",
     "react-native": "0.73.6",
@@ -30,5 +37,6 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
+  "type": "module",
   "private": true
 }
