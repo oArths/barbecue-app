@@ -1,7 +1,6 @@
 import axios from 'axios'
 import * as fs from 'expo-file-system';
 
-
 // cria a conexão com a api
 const api = axios.create({
     baseURL: "https://gold-anemone-wig.cyclic.app/receitas"
@@ -12,8 +11,8 @@ const pathReceitasDatabase = "./backend/database/receitas.txt"
 // consulta e guarda as receitas
 export const consultarTodasReceitas = async () => {
     return fs.readAsStringAsync(pathReceitasDatabase)
-    .then((receitas) => JSON.parse(receitas))
-    .catch((err) => api
+        .then((receitas) => JSON.parse(receitas))
+        .catch((err) => api
             // consultas as receitas caso não existam
             .get("/todas")
             .then((response) => {
@@ -24,10 +23,14 @@ export const consultarTodasReceitas = async () => {
 
 }
 
-export const pequisarReceita = async (nome) => await
-    consultarTodasReceitas()
-        .then((receitas) => receitas
-            .filter((receita) => removerFormatacao(receita.receita).includes(removerFormatacao(nome))))
+export const pesquisarReceitaPorNome = async (nome) => {
+
+    console.log(nome)
+    return await
+        consultarTodasReceitas()
+            .then((receitas) => receitas
+                .filter((receita) => removerFormatacao(receita.receita).startsWith(removerFormatacao(nome))))
+}
 
 
 export const consultarReceitaPorId = async (id) => await

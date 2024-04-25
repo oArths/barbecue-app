@@ -27,7 +27,6 @@ const IngredientItem = ({ ingredient }) => {
 
 export default function Receitas({ navigation: { navigate }, route }) {
 
-  console.log(route.params.receita)
   const receita = route.params.receita
   const ingredients = receita.ingredientes.split(",").map((ingredient) => ingredient.trim())
 
@@ -54,9 +53,6 @@ export default function Receitas({ navigation: { navigate }, route }) {
         <View style={styles.recipeTitleContainer}>
           <Text style={styles.recipeTitle}>{receita.receita}</Text>
         </View>
-        <Text style={styles.descriptionText}>
-          { }
-        </Text>
         <View style={styles.ingredientsHeader}>
           <Text style={styles.ingredientsTitle}>
             Ingredientes <Text style={styles.ingredientsCount}>({ingredients.length})</Text>

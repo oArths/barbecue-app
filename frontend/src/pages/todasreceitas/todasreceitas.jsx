@@ -1,45 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
   Image,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
+  Pressable,
   TextInput,
 } from "react-native";
-import { consultarTodasReceitas, pequisarReceita } from "../../../../backend/services/api-receitas";
-import { useNavigation } from "@react-navigation/native";
+import { pesquisarReceitaPorNome } from "../../../../backend/services/api-receitas";
 import FoodItem from "../../components/foodItem/foodItem"
 
 
-export default function TodasReceitas() {
+export default function TodasReceitas({ navigation: { navigate } }) {
 
   const [recipes, setRecipes] = useState([]);
 
-  const navigation = useNavigation();
-
-  function getRecipes() {
-    consultarTodasReceitas().then(receitasEncontradas => {
-      console.log(receitas)
-      setReceitas(receitasEncontradas)
-    })
+  async function searchRecipes(recipeName) {
+    console.log(recipeName)
+    const receitasEncontradas = await pesquisarReceitaPorNome(recipeName)
+    setRecipes(receitasEncontradas)
+    console.log(receitasEncontradas)
   }
 
-  function searchRecipes() {
-    consultarTodasReceitas().then(receitasEncontradas => {
-      console.log(receitas)
-      setReceitas(receitasEncontradas)
-    })
-  }
+  useEffect(() => {
+    searchRecipes('')
+  }, [])
 
   const goToHome = () => {
-    navigation.navigate("Home");
+    navigate("Home");
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <TouchableOpacity
+      <Pressable
         onPress={goToHome}
         style={styles.buttonContainer}
       >
@@ -48,7 +42,7 @@ export default function TodasReceitas() {
           source={require("../../img/seta.png")}
           style={styles.actionIcon}
         />
-      </TouchableOpacity>
+      </Pressable>
 
       {/* <Image
         resizeMode="contain"
@@ -59,16 +53,18 @@ export default function TodasReceitas() {
       <TextInput
         style={styles.searchContainer}
         placeholder="Pesquise sua receita"
+        onChangeText={(text) => searchRecipes(text)}
       ></TextInput>
 
       <Text style={styles.sectionTitle}>Receitas</Text>
       <View style={styles.divider} />
-      {recipes.map((item, index) => (
-        <FoodItem
-          key={index}
-          item={item}
-        />
-      ))}
+      {recipes.length != 0 &&
+          recipes.map((item, index) => (
+            <FoodItem
+              key={index}
+              item={item}
+            />
+        ))}
       <View style={styles.bottomSpacer} />
     </ScrollView>
   );
@@ -78,7 +74,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F5F5F5",
     alignItems: "stretch",
-    padding: 18,
+    padding: 15,
   },
   header: {
     flexDirection: "row",
