@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   View,
   StyleSheet,
@@ -7,33 +7,35 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+ 
+const IngredientItem = ({ ingredient }) => {
 
-const IngredientItem = ({ name, quantity }) => (
-  <View style={styles.ingredientContainer}>
-    <Text style={styles.ingredientName}>{name}</Text>
-    <Text style={styles.ingredientQuantity}>{quantity}</Text>
-  </View>
-);
+  return (
+    <View style={styles.ingredientContainer} >
+      
+      <Text style={styles.ingredientName}>{ingredient.replace(/[0-9]g|de|do|da/g,"").trim()}</Text>
 
-const ingredients = [
-  { name: "Ingrediente", quantity: "1" },
-  { name: "Ingrediente", quantity: "1" },
-  { name: "Ingrediente", quantity: "1" },
-];
+      {/* adiciona a quantidade caso o ingrediente tiver */}
+      {ingredient.search(/\d+/) > -1 &&
+        <Text style={styles.ingredientQuantity}>{ingredient.replace(/[^0-9g]/g,"").trim()}</Text>
+      }
+    </View>
+  )
 
-export default function Receita() {
-  const navigation = useNavigation();
+}
 
-  const onPress = () => {
-    navigation.navigate("Home");
-  };
+
+export default function Receitas({ navigation: { navigate }, route }) {
+
+  console.log(route.params.receita)
+  const receita = route.params.receita
+  const ingredients = receita.ingredientes.split(",").map((ingredient) => ingredient.trim())
 
   return (
     <ScrollView>
       <View style={styles.container}>
         <TouchableOpacity
-          onPress={onPress}
+          onPress={() => navigate("Home")}
           style={styles.buttonContainer}
         >
           <Image
@@ -45,29 +47,25 @@ export default function Receita() {
 
         <Image
           resizeMode="auto"
-          source={require("../../img/picanha.png")}
+          source={{ uri: receita.link_imagem }}
           style={styles.mainImage}
         />
 
         <View style={styles.recipeTitleContainer}>
-          <Text style={styles.recipeTitle}>Picanha</Text>
+          <Text style={styles.recipeTitle}>{receita.receita}</Text>
         </View>
         <Text style={styles.descriptionText}>
-          lorem is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book. It has{" "}
+          { }
         </Text>
         <View style={styles.ingredientsHeader}>
           <Text style={styles.ingredientsTitle}>
-            Ingredientes <Text style={styles.ingredientsCount}>(12)</Text>
+            Ingredientes <Text style={styles.ingredientsCount}>({ingredients.length})</Text>
           </Text>
         </View>
         {ingredients.map((ingredient, index) => (
           <IngredientItem
             key={index}
-            name={ingredient.name}
-            quantity={ingredient.quantity}
+            ingredient={ingredient}
           />
         ))}
       </View>

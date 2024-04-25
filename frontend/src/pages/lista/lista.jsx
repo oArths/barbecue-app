@@ -69,7 +69,7 @@ const Lista = () => {
                 </S.Result>
             </S.ContainerResult>
             <Button
-                Label="Voltar"
+                Label="Finalizar"
 
                 onPress={() => {
                     nav.navigate("Home")

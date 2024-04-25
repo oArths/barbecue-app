@@ -12,15 +12,16 @@ import {
 import { Card } from '../../components/card/card.jsx';
 import { useNavigation } from "@react-navigation/native";
 
-export default function Home() {
-  const navigation = useNavigation();
+export default function Home({navigation: { navigate }}) {
   const [recipe, setRecipe] = useState({})
   const loading = useRef(false)
 
   const goTo = {
-    Receitas: () => navigation.navigate("Receitas"),
-    TodasReceitas: () => navigation.navigate("TodasReceitas"),
-    Pessoas: () => navigation.navigate("Pessoas")
+    Receitas: () => navigate("Receitas", {
+      receita: recipe
+    }),
+    TodasReceitas: () => navigate("TodasReceitas"),
+    Pessoas: () => navigate("Pessoas") 
   }
 
   function getMainRecipe() {
