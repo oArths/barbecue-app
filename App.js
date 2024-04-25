@@ -1,11 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import Selecao from "./src/pages/selecao/selecao";
-import Pessoas from "./src/pages/pessoas/pessoas";
-import Lista from  "./src/pages/lista/lista";
-import Inicio from "./src/pages/inicio/inicio";
-import Home from "./src/pages/home/home"
-import Receita from "./src/pages/receita/receita";
-import TodasReceitas from "./src/pages/todasreceitas/todasreceitas"
+import Selecao from "./frontend/src/pages/selecao/selecao";
+import Pessoas from "./frontend/src/pages/pessoas/pessoas";
+import Lista from  "./frontend/src/pages/lista/lista";
+import Inicio from "./frontend/src/pages/inicio/inicio";
+import Home from "./frontend/src/pages/home/home"
+import Receita from "./frontend/src/pages/receita/receita";
+import TodasReceitas from "./frontend/src/pages/todasreceitas/todasreceitas"
 
 import { View } from "react-native";
 import { PaperProvider } from "react-native-paper";

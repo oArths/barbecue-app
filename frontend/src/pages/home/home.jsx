@@ -1,6 +1,7 @@
 // Importações necessárias
-import React, { useEffect, useState } from "react";
-import { consultarReceitaPorId } from '../../../../backend/services/api-receitas.js'
+import React, { useEffect, useRef, useState } from "react";
+import { consultarReceitaPorId } from '../../../../backend/services/api-receitas.js';
+import Loading from 'react-loading';
 import {
   StyleSheet,
   View,
@@ -8,24 +9,25 @@ import {
   Pressable,
   Image,
 } from "react-native";
-import { Card } from '../../components/card/card.jsx'
+import { Card } from '../../components/card/card.jsx';
 import { useNavigation } from "@react-navigation/native";
-import { ImageBackground } from "react-native-web";
 
 export default function Home() {
   const navigation = useNavigation();
   const [recipe, setRecipe] = useState({})
+  const loading = useRef(false)
 
   const goTo = {
     Receitas: () => navigation.navigate("Receitas"),
     TodasReceitas: () => navigation.navigate("TodasReceitas"),
-    Lista: () => navigation.navigate("Lista")
+    Pessoas: () => navigation.navigate("Pessoas")
   }
 
   function getMainRecipe() {
     consultarReceitaPorId(1).then((receita) => {
-      console.log(receita)
+      loading.current = true
       setRecipe(receita)
+      console.log(recipe)
     })
   }
 
@@ -42,37 +44,34 @@ export default function Home() {
         source={require("../../img/Logo.png")}
       />
 
+
+
+
       {/* primeira receita  */}
-      <ImageBackground source={{ uri: recipe.link_imagem }} style={styles.mainImageContainer} resizeMode="cover">
 
-        {/* 
-         
-         Não usamos o campo da nota
+      <View style={styles.mainImageContainer}>
+        { loading.current
+          ?
+          <>
+            <Image source={{ uri: recipe.link_imagem }} style={styles.mainImage} resizeMode="cover" />
+            <Pressable style={styles.book} onPress={goTo.Receitas}>
+                <Image
+                    resizeMode="auto"
+                    source={require("../../img/book.png")}
+                    style={styles.book}/> 
+              
+            </Pressable>
+    
+            <View style={styles.textContainer}>
+              <Text style={styles.title}>{recipe.receita}</Text>
+              <Text style={styles.subtitle}>Veja a Receita Clicando no Card</Text>
+            </View>
+          </> 
+          :  <Loading type="bubbles" color="#A4161A" height="100%" width="30%"/> 
           
-          <Image
-            style={styles.nota}
-            resizeMode="auto"
-            source={require("../../img/nota.png")}
-          /> */}
+        }
 
-        <Pressable
-          style={styles.book}
-          onPress={goTo.Receitas}
-        >
-          <View>
-            <Image
-              resizeMode="auto"
-              source={require("../../img/book.png")}
-            />
-          </View>
-        </Pressable>
-
-
-        <Text style={styles.title}>{recipe.receita}</Text>
-
-        <Text style={styles.subtitle}>Veja a Receita Clicando no Card</Text>
-      </ImageBackground>
-
+      </View>
 
       <Text style={styles.title2}>Nossas Opções</Text>
 
@@ -83,14 +82,12 @@ export default function Home() {
           <Card imageName="boi.png" text="bovina" />
           <Card imageName="porco.png" text="suina" />
           <Card imageName="bebidas.png" text="bebidas" />
-          {/* <Card imageName="porco.png"/>
-            <Card imageName="bebidas.png"/> */}
         </View>
       </View>
 
       <Pressable
 
-        onPress={goTo.Lista}
+        onPress={goTo.Pessoas}
         style={styles.button}>
         <Text style={{ color: "white", left: 50, }}>Faça Sua lista</Text>
         <Image
@@ -118,36 +115,40 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   mainImageContainer: {
-    width: "1000",
-    height: "600",
-    backgroundColor: "black"
+    display: "flex",
+    alignItems: "center",
+    width: "95%",
+    height: "25%",
+    position: "relative",
   },
-  // nota: {
-  //   padding: 0,
-  //   position: "absolute",
-  //   margin: 10,
-  // },
-  book: {
-    padding: 0,
+  mainImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
     position: "absolute",
-    marginLeft: 280,
-    margintop: 150,
+    borderRadius: 15,
+  },
+  book: {
+    objectFit: "contain",
+    alignSelf: 'flex-end',
+    margin: 5
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "baseline",
+    width: "100%",
+    alignItems: "left",
+    padding: 10
   },
   title: {
     padding: 0,
-    marginTop: 110,
-    position: "absolute",
     color: "#fff",
     fontSize: 20,
-    bottom: 40,
-    left: 10,
   },
   subtitle: {
     padding: 0,
-    marginTop: 130,
-    position: "absolute",
     color: "#fff",
-    left: 10,
   },
   title2: {
     fontSize: 24,

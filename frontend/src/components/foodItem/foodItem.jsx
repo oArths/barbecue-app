@@ -9,7 +9,6 @@ import {
   TextInput,
 } from "react-native";
 import { consultarTodasReceitas, pequisarReseita } from "../../../../backend/services/api-receitas";
-import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 
