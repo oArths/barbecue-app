@@ -1,43 +1,45 @@
 // Importações necessárias
 import React, { useEffect, useRef, useState } from "react";
-import { consultarReceitaPorId } from '../../../../backend/services/api-receitas.js';
-import Loading from 'react-loading';
+import { consultarReceitaPorId } from "../../../../backend/services/api-receitas.js";
 import {
   StyleSheet,
   View,
   Text,
   Pressable,
   Image,
+  ActivityIndicator,
 } from "react-native";
-import { Card } from '../../components/card/card.jsx';
 import { useNavigation } from "@react-navigation/native";
+import { createIconSetFromFontello } from "react-native-vector-icons";
+import { Card } from "../../components/card/card.jsx";
 
-export default function Home({navigation: { navigate }}) {
-  const [recipe, setRecipe] = useState({})
-  const loading = useRef(false)
+
+export default function Home({ navigation: { navigate } }) {
+  const [recipe, setRecipe] = useState({});
+  const loading = useRef(false);
 
   const goTo = {
-    Receitas: () => navigate("Receitas", {
-      receita: recipe
-    }),
+    Receitas: () =>
+      navigate("Receitas", {
+        receita: recipe,
+      }),
     TodasReceitas: () => navigate("TodasReceitas"),
-    Pessoas: () => navigate("Pessoas") 
-  }
+    Pessoas: () => navigate("Pessoas"),
+  };
 
   function getMainRecipe() {
     consultarReceitaPorId(1).then((receita) => {
-      loading.current = true
-      setRecipe(receita)
-      console.log(recipe)
-    })
+      loading.current = true;
+      setRecipe(receita);
+      console.log(recipe);
+    });
   }
 
   useEffect(() => {
-    getMainRecipe()
-  }, [])
+    getMainRecipe();
+  }, []);
 
   return (
-
     <View style={styles.container}>
       <Image
         style={styles.logo}
@@ -45,60 +47,54 @@ export default function Home({navigation: { navigate }}) {
         source={require("../../img/Logo.png")}
       />
 
-
-
-
       {/* primeira receita  */}
 
       <View style={styles.mainImageContainer}>
-        { loading.current
-          ?
+        {loading.current ? (
           <>
-            <Image source={{ uri: recipe.link_imagem }} style={styles.mainImage} resizeMode="cover" />
+            <Image
+              source={{ uri: recipe.link_imagem }}
+              style={styles.mainImage}
+              resizeMode="cover"
+            />
             <Pressable style={styles.book} onPress={goTo.Receitas}>
-                <Image
-                    resizeMode="auto"
-                    source={require("../../img/book.png")}
-                    style={styles.book}/> 
-              
+              <Image
+                resizeMode="auto"
+                source={require("../../img/book.png")}
+                style={styles.book}
+              />
             </Pressable>
-    
+
             <View style={styles.textContainer}>
               <Text style={styles.title}>{recipe.receita}</Text>
-              <Text style={styles.subtitle}>Veja a Receita Clicando no Card</Text>
+              <Text style={styles.subtitle}>
+                Veja a Receita Clicando no Card
+              </Text>
             </View>
-          </> 
-          :  <Loading type="bubbles" color="#A4161A" height="100%" width="30%"/> 
-          
-        }
-
+          </>
+        ) : (
+          <ActivityIndicator size="large" color="#A4161A" />
+        )}
       </View>
 
       <Text style={styles.title2}>Nossas Opções</Text>
 
-
-
       <View style={styles.slider}>
         <View style={styles.cardContainer}>
-          <Card imageName="boi.png" text="bovina" />
-          <Card imageName="porco.png" text="suina" />
-          <Card imageName="bebidas.png" text="bebidas" />
+          <Card image={require("../../img/boi.png")} text="bovina" />
+          <Card image={require("../../img/porco.png")} text="suina" />
+          <Card image={require("../../img/bebidas.png")} text="bebidas" />
         </View>
       </View>
 
-      <Pressable
-
-        onPress={goTo.Pessoas}
-        style={styles.button}>
-        <Text style={{ color: "white", left: 50, }}>Faça Sua lista</Text>
+      <Pressable onPress={goTo.Pessoas} style={styles.button}>
+        <Text style={{ color: "white", left: 50 }}>Faça Sua lista</Text>
         <Image
           style={{ width: 13, height: 11, left: 60 }}
           source={require("../../img/Union.png")}
         />
       </Pressable>
-
     </View>
-
   );
 }
 
@@ -131,8 +127,8 @@ const styles = StyleSheet.create({
   },
   book: {
     objectFit: "contain",
-    alignSelf: 'flex-end',
-    margin: 5
+    alignSelf: "flex-end",
+    margin: 5,
   },
   textContainer: {
     flex: 1,
@@ -140,7 +136,7 @@ const styles = StyleSheet.create({
     alignItems: "baseline",
     width: "100%",
     alignItems: "left",
-    padding: 10
+    padding: 10,
   },
   title: {
     padding: 0,
@@ -156,7 +152,6 @@ const styles = StyleSheet.create({
     textAlign: "left",
 
     padding: 10,
-
   },
   bebidas: {
     width: 30,
@@ -173,7 +168,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#A4161A",
     padding: 10,
@@ -181,6 +176,5 @@ const styles = StyleSheet.create({
     width: 206,
     height: 54,
     marginTop: 30,
-
   },
 });
