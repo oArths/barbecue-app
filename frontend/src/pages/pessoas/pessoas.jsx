@@ -22,13 +22,12 @@ const Pessoas = () => {
     return (
         <S.Body>
             <S.iconContainer>
-
                 <S.IconButton onPress={() => nav.goBack()}>
                     <S.Icon source={require("../../img/seta.png")} />
                 </S.IconButton>
             </S.iconContainer>
             <S.TitleContainer>
-                <S.Title>Selecione as pessoaaaas</S.Title>
+                <S.Title>Selecione as pessoas</S.Title>
             </S.TitleContainer>
             <S.Conatiner>
                 <S.ConatinerOp>
@@ -37,7 +36,7 @@ const Pessoas = () => {
                         <S.TitleOp>Homem</S.TitleOp>
                     </S.HaederContainer>
                     <S.ConatinerCount>
-                        <Timer maxCount={50 - total} onCountChange={handleTotalChange} />
+                        <Timer maxCount={total} onCountChange={handleTotalChange} />
                     </S.ConatinerCount>
                 </S.ConatinerOp>
                 <S.ConatinerOp>
@@ -46,7 +45,7 @@ const Pessoas = () => {
                         <S.TitleOp>Mulher</S.TitleOp>
                     </S.HaederContainer>
                     <S.ConatinerCount>
-                        <Timer maxCount={50 - total} onCountChange={handleTotalChange} />
+                        <Timer maxCount={total} onCountChange={handleTotalChange} />
                     </S.ConatinerCount>
                 </S.ConatinerOp>
                 <S.ConatinerOp>
@@ -55,7 +54,7 @@ const Pessoas = () => {
                         <S.TitleOp>Criança</S.TitleOp>
                     </S.HaederContainer>
                     <S.ConatinerCount>
-                        <Timer maxCount={50 - total} onCountChange={handleTotalChange} />
+                        <Timer maxCount={total} onCountChange={handleTotalChange} />
                     </S.ConatinerCount>
                 </S.ConatinerOp>
                 <S.ConatinerOp>

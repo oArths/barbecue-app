@@ -5,7 +5,7 @@ const Timer = ({ maxCount, onCountChange }) => {
   const [count, setCount] = useState(0);
 
   const increaseCount = () => {
-    if (count < maxCount) {
+    if (maxCount < 50) {
       const newCount = count + 1;
       setCount(newCount);
       onCountChange(newCount, 'increase'); 
