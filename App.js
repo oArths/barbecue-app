@@ -20,7 +20,7 @@ export default function App() {
     <PaperProvider>
       <NavigationContainer>
         <StatusBar style="light" backgroundColor="transparent" translucent />
-        <Stack.Navigator  initialRouteName="Pessoas"  screenOptions={{ headerShown: false }}>
+        <Stack.Navigator  initialRouteName="Inicio"  screenOptions={{ headerShown: false }}>
 
           <Stack.Screen
             name="Pessoas"
