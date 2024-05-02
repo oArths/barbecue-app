@@ -10,10 +10,10 @@ export const Card = ({imageName, text}) => {
         <Pressable
         onPress={() => navigation.navigate("TodasReceitas")}
         style={styles.card}>
-            <img
+            <Image
                 style={styles.boi}
                 // resizeMode="auto"
-                src={`/frontend/src/img/${imageName}`}
+                source={require(`/frontend/src/img/${imageName}`)}
             />
             <Text style={{ color: "white" }}>{text}</Text>
         </Pressable>

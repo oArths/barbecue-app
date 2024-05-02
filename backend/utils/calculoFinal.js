@@ -56,8 +56,9 @@ async function calcularConsumo(itens, homens, mulheres, criancas) {
         // calcula a quantidade de gramas para cada genero
         let qtdTotal = 0;
         qtdTotal += await calcularQtdsPorGenero(produto.pk_idproduto, "homem", homens);
+        console.log(qtdTotal)
         qtdTotal += await calcularQtdsPorGenero(produto.pk_idproduto, "mulher", mulheres);
-
+        
         // caso não seja para maiores de 18, criancas podem consumir
         if (!produto.maiorIdade) {
             qtdTotal += await calcularQtdsPorGenero(produto.pk_idproduto, "crianca", criancas);
@@ -78,7 +79,7 @@ async function calcularConsumo(itens, homens, mulheres, criancas) {
 // calcula o consumo de gramas baseado na quantidade de pessoas e tipo da carne 
 const calcularQtdsPorGenero = async (id, genero, qtdPessoas) => {
     const produto = await genero_produtos.buscarPorIdEGenero(genero, id)
-
+    console.log(produto)
     // caso não encontrar um registro que relaciona a quantidade
     return produto ? produto.qtdMaxima * qtdPessoas : 0
 }

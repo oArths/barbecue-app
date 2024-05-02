@@ -12,8 +12,10 @@ export function initDatabase() {
         tx.executeSql(createTable.produto);
 
         // cria a tabela de genero_produto
-        tx.execSql(createTable.generoProduto);
+        tx.executeSql(createTable.generoProduto);
 
+
+        
         // adiciona valores iniciais na tabela de produto
         tx.executeSql(insertInto.produto);
 
