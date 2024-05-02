@@ -25,7 +25,7 @@ const Pessoas = ({ navigation: {navigate} }) => {
   return (
     <S.Body>
       <S.iconContainer>
-        <S.IconButton onPress={() => nav.goBack()}>
+        <S.IconButton onPress={() => navigate('Home')}>
           <S.Icon source={require("../../img/seta.png")} />
         </S.IconButton>
       </S.iconContainer>

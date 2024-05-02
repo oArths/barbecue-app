@@ -1,27 +1,22 @@
 import * as React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
-import { useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { TouchableOpacity } from "react-native-web";
+import { View, StyleSheet, Image, Text, Pressable} from "react-native";
 
-export default function Inicio() {
-  const navigation = useNavigation();
+export default function Inicio({navigation: {navigate}}) {
 
   const goToHome = () => {
-    navigation.navigate("Home");
+    navigate("Home");
   }
 
   return (
-    <TouchableOpacity onPress={goToHome} style={styles.container}>
+    <Pressable onPress={goToHome} style={styles.container}>
       <View>
         <Image
-          resizeMode="contain"
           source={require("../../img/Logo.png")}
           style={styles.image}
         />
         <Text style={styles.text}>Let's go to the barbecue</Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 
