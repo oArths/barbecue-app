@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import * as S from "./style";
 
-const Timer = ({ maxCount, onCountChange }) => {
-  const [count, setCount] = useState(0);
+const Timer = ({ maxCount, onCountChange, people }) => {
+
+  const [count,setCount] = useState(0)
 
   const increaseCount = () => {
     if (maxCount < 50) {
-      const newCount = count + 1;
-      setCount(newCount);
-      onCountChange(newCount, 'increase'); 
+      setCount(count + 1);
+      onCountChange('increase'); 
     }
   };
   
   const decreaseCount = () => {
     if (count > 0) {
-      const newCount = count - 1;
-      setCount(newCount);
-      onCountChange(newCount, 'decrease'); 
+      setCount(count - 1);
+      onCountChange('decrease'); 
     }
   };
   
