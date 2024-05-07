@@ -38,17 +38,10 @@ export default function TodasReceitas({ navigation: { navigate } }) {
         style={styles.buttonContainer}
       >
         <Image
-          resizeMode="auto"
           source={require("../../img/seta.png")}
           style={styles.actionIcon}
         />
       </Pressable>
-
-      {/* <Image
-        resizeMode="contain"
-        source={require("../../img/lupa.png")}
-        style={styles.searchIcon}
-      /> */}
 
       <TextInput
         style={styles.searchContainer}

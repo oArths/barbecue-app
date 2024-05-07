@@ -13,7 +13,6 @@ import { useNavigation } from "@react-navigation/native";
 import { createIconSetFromFontello } from "react-native-vector-icons";
 import { Card } from "../../components/card/card.jsx";
 
-
 export default function Home({ navigation: { navigate } }) {
   const [recipe, setRecipe] = useState({});
   const loading = useRef(false);
@@ -59,7 +58,6 @@ export default function Home({ navigation: { navigate } }) {
             />
             <Pressable style={styles.book} onPress={goTo.Receitas}>
               <Image
-                resizeMode="auto"
                 source={require("../../img/book.png")}
                 style={styles.book}
               />
