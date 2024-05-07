@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start --tunnel",
+    "start-tunnepl": "expo start --tunnel",
+    "start": "expo start",
     "back": "nodemon ./backend/services/api-receitas.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
