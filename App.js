@@ -7,7 +7,6 @@ import Home from "./frontend/src/pages/home/home"
 import Receita from "./frontend/src/pages/receita/receita";
 import TodasReceitas from "./frontend/src/pages/todasreceitas/todasreceitas"
 
-import { View } from "react-native";
 import { PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -20,7 +19,7 @@ export default function App() {
     <PaperProvider>
       <NavigationContainer>
         <StatusBar style="light" backgroundColor="transparent" translucent />
-        <Stack.Navigator  initialRouteName="Inicio"  screenOptions={{ headerShown: false }}>
+        <Stack.Navigator  initialRouteName="Pessoas"  screenOptions={{ headerShown: false }}>
 
           <Stack.Screen
             name="Pessoas"

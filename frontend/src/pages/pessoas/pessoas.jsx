@@ -2,8 +2,11 @@ import * as S from "./style";
 import { useEffect, useRef, useState } from "react";
 import Timer from "../../components/timer/timer";
 import Button from "../../components/botao/botao";
+import { initDatabase } from "../../../../backend/database/initDatabase";
 
 const Pessoas = ({ navigation: {navigate} }) => {
+  
+  initDatabase()
   
     // armazena os dados da seleção 
   const [total, setTotal] = useState(0);
