@@ -8,7 +8,7 @@ import {
   Pressable,
   TextInput,
 } from "react-native";
-import { pesquisarReceitaPorNome } from "../../../../backend/services/api-receitas";
+import { get_by_search_name } from "../../services/api-receitas.ba";
 import FoodItem from "../../components/foodItem/foodItem"
 
 
@@ -17,10 +17,8 @@ export default function TodasReceitas({ navigation: { navigate } }) {
   const [recipes, setRecipes] = useState([]);
 
   async function searchRecipes(recipeName) {
-    console.log(recipeName)
-    const receitasEncontradas = await pesquisarReceitaPorNome(recipeName)
+    const receitasEncontradas = await get_by_search_name(recipeName)
     setRecipes(receitasEncontradas)
-    console.log(receitasEncontradas)
   }
 
   useEffect(() => {

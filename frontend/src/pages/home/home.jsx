@@ -1,6 +1,6 @@
 // Importações necessárias
 import React, { useEffect, useRef, useState } from "react";
-import { consultarReceitaPorId } from "../../../../backend/services/api-receitas.js";
+import { get_latest_recipe } from "../../services/api-receitas.ba.js";
 import {
   StyleSheet,
   View,
@@ -27,11 +27,12 @@ export default function Home({ navigation: { navigate } }) {
   };
 
   function getMainRecipe() {
-    consultarReceitaPorId(1).then((receita) => {
+    get_latest_recipe()
+    .then((receita) => {
       loading.current = true;
       setRecipe(receita);
-      console.log(recipe);
-    });
+    })
+    .catch((e) => console.error(e))
   }
 
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function Home({ navigation: { navigate } }) {
             </Pressable>
 
             <View style={styles.textContainer}>
-              <Text style={styles.title}>{recipe.receita}</Text>
+              <Text style={styles.title}>{recipe.name}</Text>
               <Text style={styles.subtitle}>
                 Veja a Receita Clicando no Card
               </Text>

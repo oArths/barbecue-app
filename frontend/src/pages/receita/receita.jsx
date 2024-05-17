@@ -28,7 +28,7 @@ const IngredientItem = ({ ingredient }) => {
 export default function Receitas({ navigation: { navigate }, route }) {
 
   const receita = route.params.receita
-  const ingredients = receita.ingredientes.split(",").map((ingredient) => ingredient.trim())
+  const ingredients = receita.ingredients.map((ingredient) => ingredient.trim())
 
   return (
     <ScrollView>
@@ -51,7 +51,7 @@ export default function Receitas({ navigation: { navigate }, route }) {
         />
 
         <View style={styles.recipeTitleContainer}>
-          <Text style={styles.recipeTitle}>{receita.receita}</Text>
+          <Text style={styles.recipeTitle}>{receita.name}</Text>
         </View>
         <View style={styles.ingredientsHeader}>
           <Text style={styles.ingredientsTitle}>
