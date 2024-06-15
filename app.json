@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "beef_grill",
+    "slug": "beef_grill",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/img/logo.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
