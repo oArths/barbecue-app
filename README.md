@@ -15,7 +15,7 @@ Uma calculadora de churrasco feita em expo, que possui consumo de receitas exter
 - **npm**: gerenciador de pacote padrão do node
 - **expo go (app no celular)**: aplicativo que permite executar o app no celular
 
-## Instalação 
+## ⚙ Instalação 
 
 ~~~bash
 npm install --legacy-peer-deps 
